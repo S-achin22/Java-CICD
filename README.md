@@ -8,7 +8,7 @@ Get a demo.zip file on your local machine.
 Write your code in folder /src/main/java 
 For example System.out.println("Microservice!");
 
-Maven Commands
-To build: mvn compile
+Maven Commands  
+To build: mvn compile  
 To build a jar file: mvn clean install  (This creates a jar file in target directory as well as .m2 directory in home)
 
