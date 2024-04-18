@@ -1,11 +1,11 @@
 # Java-CICD
 
-This project is to create a CI/CD pipeline for containerized Java applications
+This project is to create a CI/CD pipeline for containerized Java applications  
 
-You can get a demo project setup using this: https://start.spring.io/
+You can get a demo project setup using this: https://start.spring.io/  
 Get a demo.zip file on your local machine.
 
-Write your code in folder /src/main/java 
+Write your code in folder /src/main/java  
 For example System.out.println("Microservice!");
 
 Maven Commands  
