@@ -26,13 +26,24 @@ test_app:
   after_script:
     - echo "Tests completed."
 
+# This stage to put inmage into ECR
+docker_build:
+  stage: deploy
+  script:
+    - echo "$AWS_ECR_REGISTRY_PASSWORD" | docker login --username "$AWS_ECR_REGISTRY_USERNAME" --password-stdin "$AWS_ECR_REGISTRY_URL"
+    - docker build -t $AWS_ECR_REGISTRY_URL/$AWS_ECR_REPOSITORY_NAME .
+    - docker push $AWS_ECR_REGISTRY_URL/$AWS_ECR_REPOSITORY_NAME
+  only:
+    - main
+
+#This stage to deploy Image pushed in ECR to EKS
 deploy_to_eks:
   stage: deploy
   script:
     - echo "Deploying to Amazon EKS..."
-    # Add your deployment commands here
+    # kubectl rollout restart deployment $DEPLOYMENT-NAME -n NAMESPACE
   needs:
     - test_app
   when: on_success
   only:
-    - master
+    - main
